@@ -45,8 +45,8 @@ userEmailElement.onclick=()=>{
 const localUserId=localStorage.getItem('UserId');
 const UserIdElement=document.querySelector('#StudentID');
 
-const setUserIdInnerHtml=(ID)=>{
-  UserIdElement.textContent=ID;
+const setUserIdInnerHtml=(StudentID)=>{
+  UserIdElement.textContent=StudentID;
 };
 if (localUserId) {
   setUserIdInnerHtml(localUserId);
