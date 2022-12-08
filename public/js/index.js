@@ -1,3 +1,4 @@
+const reg2 = /[0-9]/;
 const reg3 = /^\w{5,12}@[a-z]{2,10}[\.][a-z]{2,3}[\.]?[a-z]{0,2}$/;
 const headerUserNameELement=document.querySelector('.user');
 const localUserName=localStorage.getItem('userName');
@@ -29,6 +30,8 @@ if (localUserEmail) {
 
 userEmailElement.onclick=()=>{
   const userEmail=prompt('메일을 입력해주세요');
+  localStorage.setItem('userEmail', userEmail);
+  setUserEmailInnerHtml(userEmail);
   // eslint-disable-next-line no-constant-condition
   while (true) {
     if (reg3.test(userEmail)) {
@@ -38,22 +41,28 @@ userEmailElement.onclick=()=>{
     // eslint-disable-next-line no-const-assign
     userEmail=prompt('메일주소는');
   }
-  localStorage.setItem('userEmail', userEmail);
-  setUserEmailInnerHtml(userEmail);
 };
-// const localStudentID=localStorage.getItem('StudentID');
-// const StudentIDElement=document.querySelector('#StudentID');
+const localUserId=localStorage.getItem('UserId');
+const UserIdElement=document.querySelector('#StudentID');
 
-// // eslint-disable-next-line no-unused-vars
-// const setStudentIDInnerHtml=(StudentID)=>{
-//   StudentIDElement.textContent=StudentID;
-// };
-// if (localStudentID) {
-//   setUserEmailInnerHtml(localStudentID);
-// }
-// userEmailElement.onclick=()=>{
-//   const StudentID=prompt('학번 입력해주세요');
-//   localStorage.setItem('StudentID', StudentID);
-//   setUserEmailInnerHtml(StudentID);
-// };
-
+const setUserIdInnerHtml=(ID)=>{
+  UserIdElement.textContent=ID;
+};
+if (localUserId) {
+  setUserIdInnerHtml(localUserId);
+}
+UserIdElement.onclick=()=>{
+  const UserId=prompt('학번을 입력해주세요');
+  localUserId.setItem('UserId', UserId);
+  setUserIdInnerHtml(UserId);
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    if (reg2.test(UserId)) {
+      break;
+    }
+    alert('학번형식이 잘못되었습니다.');
+    // eslint-disable-next-line no-const-assign
+    UserId=prompt('학번은');
+  }
+}
+;
